@@ -3,6 +3,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "ZeroOneKnapsack",
+      "request": "launch",
+      "mainClass": "ZeroOneKnapsack",
+      "projectName": "Algorithm_a3c8de89"
+    },
+    {
+      "type": "java",
       "name": "InsertionSort",
       "request": "launch",
       "mainClass": "InsertionSort",
