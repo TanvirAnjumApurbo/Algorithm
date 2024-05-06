@@ -23,7 +23,7 @@ public class ZeroOneKnapsack {
           dp[i][w] = 0;
 
         } else if (weights[i - 1] <= w) {
-          dp[i][w] = Math.max(values[i - 1] + dp[i - 1][w - weights[i - 1]], dp[i - 1][w]);
+          dp[i][w] = Math.max(dp[i - 1][w - weights[i - 1]] + values[i - 1], dp[i - 1][w]);
 
         } else {
           dp[i][w] = dp[i - 1][w];
