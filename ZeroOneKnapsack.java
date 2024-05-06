@@ -2,10 +2,10 @@ public class ZeroOneKnapsack {
 
   public static void main(String[] args) {
 
-    int[] weights = { 3, 2, 5, 4 };
-    int[] values = { 4, 3, 6, 5 };
+    int[] weights = { 2, 3, 4, 5 };
+    int[] values = { 1, 2, 5, 6 };
 
-    int W = 5;
+    int W = 8;
     int n = weights.length;
 
     System.out.println("\nMax Profit: " + knapsack(W, weights, values, n));
@@ -31,18 +31,23 @@ public class ZeroOneKnapsack {
       }
     }
 
+    int[] includedItems = new int[n];
     int i = n, w = W;
-    System.out.print("Items Included: ");
-    System.out.print("[ ");
+    int count = 0;
 
     while (i > 0 && w > 0) {
       if (dp[i][w] != dp[i - 1][w]) {
-        System.out.print("0 ");
+        includedItems[count++] = 1;
         w = w - weights[i - 1];
       } else {
-        System.out.print("1 ");
+        includedItems[count++] = 0;
       }
       i--;
+    }
+
+    System.out.print("Items Included: [ ");
+    for (int j = n - 1; j >= 0; j--) {
+      System.out.print(includedItems[j] + " ");
     }
     System.out.print("]");
 
