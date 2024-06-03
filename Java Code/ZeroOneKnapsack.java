@@ -2,10 +2,10 @@ public class ZeroOneKnapsack {
 
   public static void main(String[] args) {
 
-    int[] weights = { 2, 3, 4, 5 };
-    int[] values = { 1, 2, 5, 6 };
+    int[] weights = { 3, 6, 4, 7, 5 };
+    int[] values = { 5, 8, 6, 10, 7 };
 
-    int W = 8;
+    int W = 13;
     int n = weights.length;
 
     System.out.println("\nMax Profit: " + knapsack(W, weights, values, n));

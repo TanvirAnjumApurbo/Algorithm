@@ -1,32 +1,32 @@
+
 import java.util.Scanner;
 
-public class ZeroOneKnapsackWithScan {
+public class ZeroOne {
   public static void main(String[] args) {
     Scanner input = new Scanner(System.in);
 
-    System.out.print("Enter the number of items: ");
+    System.out.println("Enter the number of items: ");
     int n = input.nextInt();
 
-    int[] weights = new int[n];
-    int[] values = new int[n];
+    int weights[] = new int[n];
+    int values[] = new int[n];
 
-    System.out.println("Enter the weights and values for each item:");
+    System.out.println("Enter the weights & values of the items: ");
     for (int i = 0; i < n; i++) {
-      System.out.print("Item " + (i + 1) + " weight and value (separated by space): ");
       weights[i] = input.nextInt();
       values[i] = input.nextInt();
     }
 
-    System.out.print("Enter the capacity of the knapsack: ");
+    System.out.println("Enter the capacity of the knapsack: ");
     int W = input.nextInt();
 
-    System.out.println("\nMax Profit: " + knapsack(W, weights, values, n));
+    System.out.println("List of products" + knapsack(W, weights, values, n));
 
-    input.close();
   }
 
-  public static int knapsack(int W, int[] weights, int[] values, int n) {
-    int[][] dp = new int[n + 1][W + 1];
+  public static int knapsack(int W, int weights[], int values[], int n) {
+
+    int dp[][] = new int[n + 1][W + 1];
 
     for (int i = 0; i <= n; i++) {
       for (int w = 0; w <= W; w++) {
@@ -34,17 +34,16 @@ public class ZeroOneKnapsackWithScan {
           dp[i][w] = 0;
         } else if (weights[i - 1] <= w) {
           dp[i][w] = Math.max(dp[i - 1][w - weights[i - 1]] + values[i - 1], dp[i - 1][w]);
-        } else {
+        } else
           dp[i][w] = dp[i - 1][w];
-        }
       }
     }
 
-    int[] includedItems = new int[n];
+    int includedItems[] = new int[n];
     int i = n, w = W;
-    // int count = 0;
 
     while (i > 0 && w > 0) {
+
       if (dp[i][w] != dp[i - 1][w]) {
         includedItems[i - 1] = 1;
         w = w - weights[i - 1];
@@ -53,13 +52,9 @@ public class ZeroOneKnapsackWithScan {
       }
       i--;
     }
-
-    System.out.print("Items Included: [ ");
     for (int j = 0; j < n; j++) {
       System.out.print(includedItems[j] + " ");
     }
-    System.out.print("]");
-
-    return dp[n][W];
+    return dp[n][w];
   }
 }

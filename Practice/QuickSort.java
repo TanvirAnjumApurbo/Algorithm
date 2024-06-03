@@ -10,23 +10,20 @@ public class QuickSort {
 
     int array[] = new int[n];
 
-    System.out.println("Enter the elements of the array");
+    System.out.println("Enter the elements of the array: ");
     for (int i = 0; i < n; i++) {
       array[i] = input.nextInt();
     }
 
     quickSort(array, 0, n - 1);
 
-    System.out.println("The sorted array is: ");
-    for (int i : array) {
-      System.out.print(i + " ");
+    System.out.println("Sorted array is ");
+    for (int num : array) {
+      System.out.print(num + " ");
     }
-
-    input.close();
   }
 
   public static void quickSort(int array[], int start, int end) {
-
     if (end <= start)
       return;
 
@@ -36,14 +33,11 @@ public class QuickSort {
   }
 
   public static int partition(int array[], int start, int end) {
-
     int pivot = array[end];
     int i = start - 1;
 
     for (int j = start; j <= end; j++) {
-
-      if (array[j] < array[pivot]) {
-
+      if (array[j] < pivot) { 
         i++;
         int temp = array[i];
         array[i] = array[j];
